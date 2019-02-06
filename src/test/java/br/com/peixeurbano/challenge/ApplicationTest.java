@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package hello;
+package br.com.peixeurbano.challenge;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+import br.com.peixeurbano.challenge.controllers.GreetingController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package hello.repositories;
+package br.com.peixeurbano.challenge.repositories;
 
-import hello.models.User;
+import br.com.peixeurbano.challenge.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {

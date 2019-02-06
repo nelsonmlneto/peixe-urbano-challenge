@@ -1,0 +1,72 @@
+
+======= Peixe Urbano ========
+
+  Objetivos:
+    - Clareza e qualidade de código
+    - Arquitetura e organização do projeto
+    - Cobertura de testes
+    - Conhecimento na linguagem Java
+
+  Entregáveis:
+    - Modelagem e persistência de dados
+    - Interface gráfica para inserir uma oferta
+    - Interface gráfica para inserir uma opção de compra
+    - Interface gráfica para associar as opções de compra na oferta selecionada
+    - Exibição de uma oferta e suas opções de compra (veja figura 1)
+    - Processar a "venda" de uma determinada opção de compra e realizar a atualização dos itens vendidos e seus totais
+
+  Notes
+    - https://spring.io/guides/gs/serving-web-content/
+    - https://spring.io/guides/gs/accessing-data-mysql/
+    - https://github.com/spring-guides/gs-accessing-data-mysql/
+    - https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-maven-and-mysql/
+
+  >> Telas:
+    ADM
+      - Listagem de Oferta
+      - Nova Oferta
+        - Inserir Oferta
+      - Detalhe de Oferta
+        - Editar Oferta
+        - Inserir Opção de Compra
+          - Observar desconto vs preço
+          - Observar estoque
+        - Associar Opção de Compra e Oferta
+
+    CLIENTE
+      - Listagem de Ofertas (publishDate e endDate)
+      - Exibição de oferta com opções (com link)
+        - Opçåo de compra repeita a data
+        - Observar Exibição
+      - Sucesso Compra
+
+  >>> Questions?
+    - Tipo "Local?"
+
+  >> DB operarions
+    - Save Deal
+    - Edit Deal
+    - Save Buy Option
+    - Edit Buy Option
+
+  >> Tasks:
+    OK - Hello World with Sring Boot and JPA
+    OK - Study Requirements
+    OK - Rename and Reorganize Project and Packages
+    OK - Implement the relationship between entities
+    - Creating Services - Test Find All, Find by Id and Edit
+    - Delete User Entity
+    - Create Services
+    - Implement Controllers and Pages
+    - Anotações
+    - Study Deploy AWS with Spring Boot
+    - Add README
+    - Testes
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package hello.models;
+package br.com.peixeurbano.challenge.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
