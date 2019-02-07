@@ -20,6 +20,10 @@
     - https://spring.io/guides/gs/accessing-data-mysql/
     - https://github.com/spring-guides/gs-accessing-data-mysql/
     - https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-maven-and-mysql/
+    - https://github.com/juliuskrah/thymeleaf-fragments-example
+
+    Tests
+    - https://github.com/spring-guides/gs-testing-web
 
   >> Telas:
     ADM
@@ -55,13 +59,15 @@
     OK - Rename and Reorganize Project and Packages
     OK - Implement the relationship between entities
     - Creating Services - Test Find All, Find by Id and Edit
+    - Test Services
     - Delete User Entity
     - Create Services
     - Implement Controllers and Pages
-    - Anotações
+    - Create Tests
+    - Commenting the code
+    - Update README
+    - Creating Docker for running the project
     - Study Deploy AWS with Spring Boot
-    - Add README
-    - Testes
 
 
 
