@@ -25,7 +25,7 @@ public class BuyOption {
     private Date endDate;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "deal_id")
     private Deal deal;
 
     public Integer getId() {

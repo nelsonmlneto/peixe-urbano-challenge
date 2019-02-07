@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: head (title='Admin - Ofertas')"><body>
+    <table>
+        <thead>
+        <tr>
+            <th> Título </th>
+            <th> Descrição </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${deals.empty}">
+            <td colspan="2"> Nenhum Deal disponível </td>
+        </tr>
+        <tr th:each="deal : ${deals}">
+            <td><span th:text="${deal.title}"></span></td>
+            <td><span th:text="${deal.text}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
