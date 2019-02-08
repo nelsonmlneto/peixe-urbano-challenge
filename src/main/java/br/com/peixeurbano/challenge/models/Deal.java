@@ -1,5 +1,7 @@
 package br.com.peixeurbano.challenge.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -17,9 +19,14 @@ public class Deal {
 
     private String text;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date publishDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date endDate;
 
     private String url;
 
@@ -105,6 +112,14 @@ public class Deal {
 
     public void setBuyOptions(Set<BuyOption> buyOptions) {
         this.buyOptions = buyOptions;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public void addBuyOption(BuyOption buyOption){

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: head (title='Admin - Ofertas')">
+
+<body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container mb-5">
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <div th:if="${(param.save != null) and (param.save[0] == 'success')}">
+                    <div class="alert alert-success alert-dismissible text-center mb-4" role="alert">
+                        Oferta salva com sucesso!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <nav aria-label="breadcrumb mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Admin</li>
+                        <li class="breadcrumb-item">Listagem de Ofertas</li>
+                        <li class="breadcrumb-item active" aria-current="page">Oferta</li>
+                    </ol>
+                </nav>
+                <div class="mt-4">
+                    <h3>Cadastro de Oferta</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-sm-6">
+                <form action="#" th:action="@{/admin/save-deal}" th:object="${deal}" method="post">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="deal-title">Título</label>
+                        <input type="text" th:field="*{title}" required class="form-control" id="deal-title">
+                    </div>
+                    <div class="form-group">
+                        <label for="deal-text">Descrição</label>
+                        <input type="text" th:field="*{text}" required class="form-control" id="deal-text">
+                    </div>
+                    <div class="form-group">
+                        <label for="deal-publish-date">Data de Publicação</label>
+                        <input type="date" th:field="*{publishDate}" required class="form-control" id="deal-publish-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="deal-end-date">Data de Expiração</label>
+                        <input type="date" th:field="*{endDate}" required class="form-control" id="deal-end-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="deal-end-date">Tipo</label>
+                        <select th:field="*{type}" required class="form-control" id="exampleFormControlSelect1">
+                            <option value="PRODUCT">Produto</option>
+                            <option value="PLACE">Lugar</option>
+                            <option value="TRIP">Viagem</option>
+                        </select>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Salvar Oferta</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <div class="text-center">
+                    <button type="button" data-toggle="modal" data-target="#buy-option-modal" class="btn btn-secondary">+ Opção de Compra</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 text-right">
+                <button type="button" class="btn btn-primary mt-4">Salvar Oferta</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="buy-option-modal" tabindex="-1" role="dialog" aria-labelledby="buy-option-form-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buy-option-form-label">Opção de Compra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Form
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Salvar Opção de Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: jquery"></div>
+    <div th:replace="fragments/footer :: bootstrap"></div>
+</body>
+</html>

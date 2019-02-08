@@ -1,22 +1,87 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/header :: head (title='Admin - Ofertas')"><body>
-    <table>
-        <thead>
-        <tr>
-            <th> Título </th>
-            <th> Descrição </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${deals.empty}">
-            <td colspan="2"> Nenhum Deal disponível </td>
-        </tr>
-        <tr th:each="deal : ${deals}">
-            <td><span th:text="${deal.title}"></span></td>
-            <td><span th:text="${deal.text}"></span></td>
-        </tr>
-        </tbody>
-    </table>
+<head th:include="fragments/header :: head (title='Admin - Ofertas')">
+
+<body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container">
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Admin</li>
+                        <li class="breadcrumb-item active" aria-current="page">Listagem de Ofertas</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row justify-content-between mb-4">
+            <div class="col-6">
+                <h3>Listagem de Ofertas</h3>
+            </div>
+            <div class="col-4 text-right">
+                <a href="/admin/deals/new" class="btn btn-primary">Nova Oferta</a>
+            </div>
+        </div>
+        <div class="row  justify-content-center">
+            <div class="col-12">
+
+                <div th:if="${deals.empty}" class="text-center">
+                    <div class="alert alert-secondary text-center" role="alert">
+                        Nenhuma Oferta Cadastrada
+                    </div>
+                </div>
+
+                <table th:if="${!deals.empty}" class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Criação</th>
+                        <th scope="col">Publicação</th>
+                        <th scope="col">Expiração</th>
+                        <th scope="col">Vendas</th>
+                        <th scope="col">Tipo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="deal : ${deals}">
+                        <th scope="row">
+                            <a th:href="@{'/admin/deals/' + ${deal.id}}" th:text="${deal.id}"></a>
+                        </th>
+                        <td>
+                            <a th:href="@{'/admin/deals/' + ${deal.id}}" th:text="${deal.title}"></a>
+                        </td>
+                        <td><span th:text="${deal.text}"></span></td>
+                        <td>
+                            <span th:text="${#dates.format(deal.createDate, 'dd/MM/yyyy')}"></span>
+                        </td>
+                        <td>
+                            <span th:text="${#dates.format(deal.publishDate, 'dd/MM/yyyy')}"></span>
+                        </td>
+                        <td>
+                            <span th:text="${#dates.format(deal.endDate, 'dd/MM/yyyy')}"></span>
+                        </td>
+                        <td><span th:text="${deal.totalSold}"></span></td>
+                        <td>
+                            <span th:if="${deal.type.name() == 'PRODUCT'}">Produto</span>
+                            <span th:if="${deal.type.name() == 'PLACE'}">Lugar</span>
+                            <span th:if="${deal.type.name() == 'TRIP'}">Viagem</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div th:replace="fragments/footer :: jquery"></div>
+    <div th:replace="fragments/footer :: bootstrap"></div>
 </body>
 </html>
