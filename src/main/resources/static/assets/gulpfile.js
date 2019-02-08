@@ -14,3 +14,17 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
 	gulp.watch('./sass/**/*.scss', ['sass']);
 });
+
+gulp.task('bootstrap-js', function() {
+	return gulp.src('./node_modules/bootstrap/dist/js/bootstrap.js')
+		.pipe(gulp.dest('./js'));
+});
+
+gulp.task('jquery-js', function() {
+	return gulp.src('./node_modules/jquery/dist/jquery.min.js')
+		.pipe(gulp.dest('./js'));
+});
+
+gulp.task('libs-js', gulp.series('bootstrap-js', 'jquery-js'));
+
+gulp.task('default', gulp.series('sass', 'libs-js'));
