@@ -21,6 +21,7 @@
     - https://github.com/spring-guides/gs-accessing-data-mysql/
     - https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-maven-and-mysql/
     - https://github.com/juliuskrah/thymeleaf-fragments-example
+    - https://spring.io/guides/gs/handling-form-submission/
 
     Tests
     - https://github.com/spring-guides/gs-testing-web
@@ -45,7 +46,6 @@
       - Sucesso Compra
 
   >>> Questions?
-    - Tipo "Local?"
 
   >> DB operarions
     - Save Deal
@@ -58,12 +58,22 @@
     OK - Study Requirements
     OK - Rename and Reorganize Project and Packages
     OK - Implement the relationship between entities
-    - Creating Services - Test Find All, Find by Id and Edit
-    - Test Services
+    OK - Creating First Services - Test Find All, Find by Id and Edit
+    OK - Node, Gulp, SASS e Bootstrap Structure    
+    - Admin - First Structure - Implement Controllers and Pages
+      OK - Admin - Nova Oferta
+      OK - Admin - Lista e ações
+      - Admin - Incluir Oferta
+   - Client First Structure - Implement Controllers and Pages
+      - Client - Listagem
+      - Client - Detalhe
+    - Deal - Create Unique Slug for URL
     - Delete User Entity
-    - Create Services
-    - Implement Controllers and Pages
+    - Rename DB
+    - Criar Home
+    - Customize Bootstrap CSS for Peixe Urbano
     - Create Tests
+    - Test Services
     - Commenting the code
     - Update README
     - Creating Docker for running the project
