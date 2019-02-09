@@ -7,7 +7,10 @@ import java.util.List;
 public interface DealService {
 
     List<Deal> getAllDeals();
+    List<Deal> getVisibleDeals();
     Deal getDealById(Integer id);
+    Deal getVisibleDealById(Integer id);
     Deal saveDeal(Deal deal);
     void removeBuyOptionById(Integer id);
+    void buyDeal(Integer dealId, Integer optionId);
 }

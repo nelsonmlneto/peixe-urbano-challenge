@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/header :: head (title='Admin - Ofertas')">
+<head th:include="fragments/header :: head (title='Cliente - Ofertas')">
 
 <body>
 <div th:replace="fragments/header :: nav"></div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div th:if="${!deals.empty}"  class="row mb-">
+            <div th:if="${!deals.empty}" class="row mb-">
                 <div th:each="deal : ${deals}" class="col-12 col-md-4">
                     <div class="card deal-card">
                         <img class="card-img-top" th:if="${deal.type.name() == 'PRODUCT'}" src="/assets/images/produto.jpg"/>

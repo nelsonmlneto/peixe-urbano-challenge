@@ -1,12 +1,16 @@
 package br.com.peixeurbano.challenge.services;
 
+import br.com.peixeurbano.challenge.models.BuyOption;
 import br.com.peixeurbano.challenge.models.Deal;
 import br.com.peixeurbano.challenge.repositories.BuyOptionRepository;
 import br.com.peixeurbano.challenge.repositories.DealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DealServiceImpl implements DealService{
@@ -23,8 +27,36 @@ public class DealServiceImpl implements DealService{
     }
 
     @Override
+    public List<Deal> getVisibleDeals() {
+        List<Deal> deals = (List<Deal>) dealRepository.findAll();
+        List<Deal> visibleDeals = new ArrayList<>();
+        for (Deal deal : deals){
+            if (deal.isVisible()){
+                visibleDeals.add(deal);
+            }
+        }
+        return visibleDeals;
+    }
+
+    @Override
     public Deal getDealById(Integer id) {
         return dealRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Deal getVisibleDealById(Integer id) {
+        Deal deal = dealRepository.findById(id).orElse(null);
+        if (!deal.isVisible()){
+            return null;
+        }
+        Set<BuyOption> visibleOptions = new HashSet<>();
+        for (BuyOption option : deal.getBuyOptions()){
+            if (option.isVisible()){
+                visibleOptions.add(option);
+            }
+        }
+        deal.setBuyOptions(visibleOptions);
+        return deal;
     }
 
     @Override
@@ -35,6 +67,18 @@ public class DealServiceImpl implements DealService{
     @Override
     public void removeBuyOptionById(Integer id) {
         buyOptionRepository.deleteById(id);
+    }
+
+    @Override
+    public void buyDeal(Integer dealId, Integer optionId) {
+        Deal deal = this.getDealById(dealId);
+        if (deal != null) {
+            for (BuyOption option : deal.getBuyOptions()){
+                if (option.getId().equals(optionId) && option.isVisible() && !option.isDisabled()){
+                    deal.getBuyOptions().remove(option);
+                }
+            }
+        }
     }
 
 

@@ -137,4 +137,9 @@ public class Deal {
     public void setValidDays(Integer validDays) {
         this.validDays = validDays;
     }
+
+    public boolean isVisible() {
+        Date today = new Date();
+        return this.publishDate.compareTo(today) * today.compareTo(this.endDate) > 0;
+    }
 }

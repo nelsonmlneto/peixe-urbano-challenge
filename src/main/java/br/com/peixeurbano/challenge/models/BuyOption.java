@@ -103,4 +103,13 @@ public class BuyOption {
     public void setDeal(Deal deal) {
         this.deal = deal;
     }
+
+    public boolean isVisible() {
+        Date today = new Date();
+        return this.startDate.compareTo(today) * today.compareTo(this.endDate) > 0;
+    }
+
+    public boolean isDisabled(){
+        return Long.compare(this.quantityCupom.longValue(), 0) == 0;
+    }
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: head (title='Cliente - Oferta')">
+
+<body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container mb-5">
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <div th:if="${(param.buy != null) and (param.buy[0] == 'success')}">
+                    <div class="alert alert-success alert-dismissible text-center mb-4" role="alert">
+                        Sua Oferta foi Comprada com Sucesso!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <nav aria-label="breadcrumb mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Cliente</li>
+                        <li class="breadcrumb-item">Listagem de Ofertas</li>
+                        <li class="breadcrumb-item active" aria-current="page">Detalhe de Oferta</li>
+                    </ol>
+                </nav>
+                <div class="mt-4">
+                    <h3 th:text="${deal.title}"></h3>
+                    <h5 th:text="${deal.text}"></h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-12 col-md-8">
+
+
+                <div th:if="${deal.buyOptions.empty}" class="text-center">
+                    <div class="alert alert-secondary text-center" role="alert">
+                        Nenhuma Oferta Disponível
+                    </div>
+                </div>
+
+                <div th:if="${!deal.buyOptions.empty}" class="mb-4">
+
+                    <div class="card">
+                        <div class="card-header">
+                            Escolha sua oferta
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <div th:each="option : ${deal.buyOptions}" class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="mb-0"><strong th:text="${option.title}"></strong></p>
+                                </div>
+                                <div class="text-right d-flex align-items-center">
+                                    <p class="mb-0">R$ <span th:text="${#numbers.formatDecimal(option.salePrice, 0, 'POINT', 2, 'COMMA')}"></span></p>
+                                    <button class="btn btn-primary text-uppercase ml-4">Compre</button>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div th:replace="fragments/footer :: jquery"></div>
+    <div th:replace="fragments/footer :: bootstrap"></div>
+</body>
+</html>

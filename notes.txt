@@ -60,22 +60,22 @@
     OK - Implement the relationship between entities
     OK - Creating First Services - Test Find All, Find by Id and Edit
     OK - Node, Gulp, SASS e Bootstrap Structure    
-    - Admin - First Structure - Implement Controllers and Pages
+    OK - Admin - First Structure - Implement Controllers and Pages
       OK - Admin - Nova Oferta
       OK - Admin - Lista e ações
-      - Admin - Incluir Oferta
-   - Client First Structure - Implement Controllers and Pages
-      - Client - Listagem
-      - Client - Detalhe
+      OK - Admin - Incluir Oferta
+   OK - Client First Structure - Implement Controllers and Pages
+      OK - Client - Listagem
+      OK - Client - Detalhe
+    OK - Delete User Entity
+    OK - Customize Bootstrap CSS for Peixe Urbano
+    - Create Rules for Visualization
+    - Create "Buy Procuct"
     - Deal - Create Unique Slug for URL
-    - Delete User Entity
     - Rename DB
     - Criar Home
-    - Customize Bootstrap CSS for Peixe Urbano
     - Create Tests
-    - Test Services
-    - Commenting the code
-    - Update README
+    - Create README
     - Creating Docker for running the project
     - Study Deploy AWS with Spring Boot
 
