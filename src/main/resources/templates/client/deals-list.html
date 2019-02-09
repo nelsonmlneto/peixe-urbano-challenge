@@ -23,7 +23,24 @@
 
             <div th:if="${deals.empty}" class="text-center">
                 <div class="alert alert-secondary text-center" role="alert">
-                    Nenhuma Oferta Cadastrada
+                    Desculpe, não temos nenhuma oferta.
+                </div>
+            </div>
+
+            <div th:if="${!deals.empty}"  class="row mb-">
+                <div th:each="deal : ${deals}" class="col-12 col-md-4">
+                    <div class="card deal-card">
+                        <img class="card-img-top" th:if="${deal.type.name() == 'PRODUCT'}" src="/assets/images/produto.jpg"/>
+                        <img class="card-img-top" th:if="${deal.type.name() == 'PLACE'}" src="/assets/images/cidade.jpg"/>
+                        <img class="card-img-top" th:if="${deal.type.name() == 'TRIP'}"src="/assets/images/viagem.jpg"/>
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${deal.title}"></h5>
+                            <p class="card-text" th:text="${deal.text}"></p>
+                            <div class="text-right">
+                                <a th:href="@{'/client/deals/' + ${deal.id}}" class="text-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
