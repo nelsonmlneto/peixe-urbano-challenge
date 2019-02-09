@@ -106,7 +106,9 @@
                                 <strong>Cupons</strong>: <span th:text="${option.quantityCupom}"></span>
                             </p>
                             <div class="text-right">
-                                <a href="#" class="btn btn-danger">Remover Opção</a>
+                                <form method="post" th:action="@{/admin/deals/{dealId}/remove-buy-option/{optionId}(dealId=${deal.id},optionId=${option.id})}">
+                                    <button type="submit" class="btn btn-danger">Remover Opção</button>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 package br.com.peixeurbano.challenge.services;
 
 import br.com.peixeurbano.challenge.models.Deal;
+import br.com.peixeurbano.challenge.repositories.BuyOptionRepository;
 import br.com.peixeurbano.challenge.repositories.DealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class DealServiceImpl implements DealService{
 
     @Autowired
     private DealRepository dealRepository;
+
+    @Autowired
+    private BuyOptionRepository buyOptionRepository;
 
     @Override
     public List<Deal> getAllDeals() {
@@ -27,4 +31,11 @@ public class DealServiceImpl implements DealService{
     public Deal saveDeal(Deal deal) {
         return dealRepository.save(deal);
     }
+
+    @Override
+    public void removeBuyOptionById(Integer id) {
+        buyOptionRepository.deleteById(id);
+    }
+
+
 }

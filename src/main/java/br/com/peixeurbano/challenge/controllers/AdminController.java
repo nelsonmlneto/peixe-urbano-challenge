@@ -64,6 +64,14 @@ public class AdminController {
         return "redirect:/admin/deals/" + id + "?save=success";
     }
 
+    @PostMapping("/admin/deals/{dealId}/remove-buy-option/{optionId}")
+    public String saveBuyOptionSubmit(@PathVariable Integer dealId, @PathVariable Integer optionId) {
+
+        dealService.removeBuyOptionById(optionId);
+
+        return "redirect:/admin/deals/" + dealId + "?save=success";
+    }
+
     private Deal prepareDealForSaving(Deal deal){
         if (deal.getId() == null) {
             deal.setCreateDate(new Date());

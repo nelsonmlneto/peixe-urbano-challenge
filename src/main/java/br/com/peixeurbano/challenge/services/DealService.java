@@ -9,4 +9,5 @@ public interface DealService {
     List<Deal> getAllDeals();
     Deal getDealById(Integer id);
     Deal saveDeal(Deal deal);
+    void removeBuyOptionById(Integer id);
 }
