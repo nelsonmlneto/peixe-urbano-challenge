@@ -32,6 +32,8 @@ public class Deal {
 
     private Long totalSold;
 
+    private Integer validDays;
+
     @Enumerated(EnumType.STRING)
     private DealType type;
 
@@ -126,5 +128,13 @@ public class Deal {
         if (this.buyOptions != null){
             buyOptions.add(buyOption);
         }
+    }
+
+    public Integer getValidDays() {
+        return validDays;
+    }
+
+    public void setValidDays(Integer validDays) {
+        this.validDays = validDays;
     }
 }

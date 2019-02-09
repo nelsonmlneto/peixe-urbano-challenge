@@ -25,6 +25,11 @@ gulp.task('jquery-js', function() {
 		.pipe(gulp.dest('./js'));
 });
 
-gulp.task('libs-js', gulp.series('bootstrap-js', 'jquery-js'));
+gulp.task('jquery-mask-js', function() {
+	return gulp.src('./node_modules/jquery-mask-plugin/dist/jquery.mask.js')
+		.pipe(gulp.dest('./js'));
+});
+
+gulp.task('libs-js', gulp.series('bootstrap-js', 'jquery-js', 'jquery-mask-js'));
 
 gulp.task('default', gulp.series('sass', 'libs-js'));

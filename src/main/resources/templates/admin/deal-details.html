@@ -33,14 +33,15 @@
         <div class="row">
 
             <div class="col-12 col-sm-6">
-                <form action="#" th:action="@{/admin/save-deal}" th:object="${deal}" method="post">
+                <form action="#" th:action="@{/admin/deals/save}" th:object="${deal}" method="post">
                     <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{createDate}">
                     <div class="form-group">
                         <label for="deal-title">Título</label>
                         <input type="text" th:field="*{title}" required class="form-control" id="deal-title">
                     </div>
                     <div class="form-group">
-                        <label for="deal-text">Descrição</label>
+                        <label for="deal-text">Texto de destaque</label>
                         <input type="text" th:field="*{text}" required class="form-control" id="deal-text">
                     </div>
                     <div class="form-group">
@@ -48,12 +49,12 @@
                         <input type="date" th:field="*{publishDate}" required class="form-control" id="deal-publish-date">
                     </div>
                     <div class="form-group">
-                        <label for="deal-end-date">Data de Expiração</label>
-                        <input type="date" th:field="*{endDate}" required class="form-control" id="deal-end-date">
+                        <label for="deal-end-date">Validade da oferta (em dias)</label>
+                        <input type="number" th:field="*{validDays}" min="0" required class="form-control" id="deal-end-date">
                     </div>
                     <div class="form-group">
-                        <label for="deal-end-date">Tipo</label>
-                        <select th:field="*{type}" required class="form-control" id="exampleFormControlSelect1">
+                        <label for="deal-type">Tipo</label>
+                        <select th:field="*{type}" class="form-control" required id="deal-type">
                             <option value="PRODUCT">Produto</option>
                             <option value="PLACE">Lugar</option>
                             <option value="TRIP">Viagem</option>
@@ -62,14 +63,59 @@
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Salvar Oferta</button>
                     </div>
-
                 </form>
             </div>
 
             <div class="col-12 col-sm-6">
-                <div class="text-center">
-                    <button type="button" data-toggle="modal" data-target="#buy-option-modal" class="btn btn-secondary">+ Opção de Compra</button>
+
+
+                <h4 class="mb-3">Opções de compra</h4>
+
+                <div th:if="${deal.buyOptions.empty}" class="text-center">
+                    <div class="alert alert-secondary text-center" role="alert">
+                        Nenhuma Opção de Compra
+                    </div>
                 </div>
+
+                <div th:if="${!deal.buyOptions.empty}" class="mb-4">
+                    <div th:each="option : ${deal.buyOptions}" class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title"><span th:text="${option.title}"></span></h5>
+                            <p class="card-text mb-1">
+                                <strong>Preço Normal</strong>: <span th:text="${option.normalPrice}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Preço com Desconto</strong>: <span th:text="${option.salePrice}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Percentual de Desconto</strong>: <span th:text="${option.percentageDiscount}"></span>
+                            </p>
+                            <div class="d-flex justify-content-between mb-1">
+                                <div class="w-50">
+                                    <p class="card-text">
+                                        <strong>Data de Entrada</strong>: <span th:text="${#dates.format(option.startDate, 'dd/MM/yyyy')}"></span>
+                                    </p>
+                                </div>
+                                <div class="w-50">
+                                    <p class="card-text">
+                                        <strong>Data de Saída</strong>: <span th:text="${#dates.format(option.endDate, 'dd/MM/yyyy')}"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="card-text mb-1">
+                                <strong>Cupons</strong>: <span th:text="${option.quantityCupom}"></span>
+                            </p>
+                            <div class="text-right">
+                                <a href="#" class="btn btn-danger">Remover Opção</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button th:attr="disabled=${deal.id != null}? 'false' : 'true'" type="button" data-toggle="modal" data-target="#buy-option-modal" class="btn btn-secondary mb-4">+ Opção de Compra</button>
+                </div>
+
             </div>
 
         </div>
@@ -85,17 +131,62 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Form
+
+                    <form id="option-form" action="#" th:action="@{/admin/deals/{id}/save-buy-option(id=${deal.id})}" th:object="${buyOption}" method="post">
+                        <input id="option-id" type="hidden" th:field="*{id}">
+                        <div class="form-group">
+                            <label for="option-title">Título</label>
+                            <input type="text" th:field="*{title}" required class="form-control" id="option-title">
+                        </div>
+                        <div class="form-group">
+                            <label for="option-price">Preço de venda normal</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="normal-price-addon">R$</span>
+                                </div>
+                                <input required type="text" class="money form-control" id="option-price" aria-describedby="normal-price-addon">
+                                <input id="option-hidden-price" type="hidden" th:field="*{normalPrice}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="option-discount">Percentual de Desconto</label>
+                            <div class="input-group">
+                                <input required type="text" class="percent form-control" id="option-discount" aria-describedby="discount-addon">
+                                <input id="option-hidden-discount" type="hidden" th:field="*{percentageDiscount}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="discount-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="option-cupons">Quantidade de cupons</label>
+                            <select th:field="*{quantityCupom}" required class="form-control" id="option-cupons">
+                                <option value="100">100</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="option-start-date">Data de Entrada</label>
+                            <input type="date" th:field="*{startDate}" required class="form-control" id="option-start-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="option-start-date">Data de Saída</label>
+                            <input type="date" th:field="*{endDate}" required class="form-control" id="option-start-date">
+                        </div>
+                    </form>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Salvar Opção de Compra</button>
+                    <button id="clean-option-form" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button id="submit-option-form" type="button" class="btn btn-primary">Salvar Opção de Compra</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div th:replace="fragments/footer :: jquery"></div>
+    <div th:replace="fragments/footer :: jquery-mask"></div>
     <div th:replace="fragments/footer :: bootstrap"></div>
+    <div th:replace="fragments/footer :: admin-deal-details"></div>
 </body>
 </html>
