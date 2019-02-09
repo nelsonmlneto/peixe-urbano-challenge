@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: head (title='Admin - Ofertas')">
+
+<body>
+<div th:replace="fragments/header :: nav"></div>
+
+<div class="container">
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item">Cliente</li>
+                    <li class="breadcrumb-item active" aria-current="page">Listagem de Ofertas</li>
+                </ol>
+            </nav>
+            <h3>Listagem de Ofertas</h3>
+        </div>
+    </div>
+    <div class="row  justify-content-center">
+        <div class="col-12">
+
+            <div th:if="${deals.empty}" class="text-center">
+                <div class="alert alert-secondary text-center" role="alert">
+                    Nenhuma Oferta Cadastrada
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div th:replace="fragments/footer :: jquery"></div>
+<div th:replace="fragments/footer :: bootstrap"></div>
+</body>
+</html>

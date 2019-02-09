@@ -82,13 +82,13 @@
                         <div class="card-body">
                             <h5 class="card-title"><span th:text="${option.title}"></span></h5>
                             <p class="card-text mb-1">
-                                <strong>Preço Normal</strong>: <span th:text="${option.normalPrice}"></span>
+                                <strong>Preço Normal</strong>: R$ <span th:text="${#numbers.formatDecimal(option.normalPrice, 0, 'POINT', 2, 'COMMA')}"></span>
                             </p>
                             <p class="card-text mb-1">
-                                <strong>Preço com Desconto</strong>: <span th:text="${option.salePrice}"></span>
+                                <strong>Preço com Desconto</strong>: R$ <span th:text="${#numbers.formatDecimal(option.salePrice, 0, 'POINT', 2, 'COMMA')}"></span>
                             </p>
                             <p class="card-text mb-1">
-                                <strong>Percentual de Desconto</strong>: <span th:text="${option.percentageDiscount}"></span>
+                                <strong>Percentual de Desconto</strong>: <span th:text="${#numbers.formatDecimal(option.percentageDiscount, 0, 'POINT', 2, 'COMMA')}"></span>%
                             </p>
                             <div class="d-flex justify-content-between mb-1">
                                 <div class="w-50">
