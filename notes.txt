@@ -71,13 +71,13 @@
     OK - Customize Bootstrap CSS for Peixe Urbano
     OK - Create Rules for Visualization
     OK - Create "Buy Procuct" and disabling option
-    - Create Home
-    - Create README
-    - Rename DB
-    - Creating Docker for running the project
-    
+    OK - Create Home
+    OK - Creating Docker for running the project
+    OK - Rename DB
+    OK - Create README and merge to master
+    - Comment Code
+ 	- Create Tests
     - Deal - Create Unique Slug for URL
-    - Create Tests
     - Study Deploy AWS with Spring Boot
 
 
