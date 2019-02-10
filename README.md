@@ -27,19 +27,19 @@ Este comando irá gerar:
 
 ## Rodando o Projeto com o Docker
 
-Gerando imagem com o Dockerfile
+Gerar a imagem com o Dockerfile:
 
 ```
 docker build -f Dockerfile -t peixe-urbano-challenge .
 ```
 
-Iniciando o container para o banco de dados
+Iniciar o container para o banco de dados mysql
 
 ```
 docker run -p 6603:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=db_challenge" mysql:latest --default-authentication-plugin=mysql_native_password
 ```
 
-Iniciando o container peixe-urbano-challenge e criando link com o container mysql
+Após a inicializaçao completa do banco, inciar o container peixe-urbano-challenge e criar link com o container mysql
 
 ```
 docker run -t --name peixe-urbano-challenge --link docker-mysql:mysql -p 8080:8080 peixe-urbano-challenge 
@@ -53,7 +53,7 @@ localhost:8080
 
 ### Docker compose
 
-Criei um arquivo docker-compose.yml para a mesma configuração acima, porém não funcionou corretamente e não entendi o motivo. Parece-me algo no container msql, o projeto spring não consegue se conectar.
+Criei um arquivo docker-compose.yml para a mesma configuração acima, porém não funcionou corretamente e não entendi o motivo. Parece-me algo no container mysql, o projeto spring não consegue se conectar.
 
 ```
 docker-compose up
