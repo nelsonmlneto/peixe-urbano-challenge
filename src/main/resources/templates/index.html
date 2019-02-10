@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: head (title='Desafio Peixe Urbano')">
+
+<body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container">
+
+       <div class="row my-5 align-items-center justify-content-center">
+           <div class="col-12 col-md-3">
+               <img src="/assets/images/peixe-urbano.svg" height="100" class="mb-4">
+           </div>
+           <div class="col-12 col-md-7">
+               <h2>Desafio - Java</h2>
+               <h5>Por Nelson Mariano Leite Neto</h5>
+           </div>
+       </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <p>Este sistema está dividido em duas partes</p>
+            </div>
+            <div class="col-12 col-md-5">
+                <div class="card mb-4">
+                    <img class="card-img-top my-3" src="/assets/images/admin.svg" height="100">
+                    <div class="card-body pt-0 text-center">
+                        <h5 class="card-title">Admin</h5>
+                        <p class="card-text">Contém as telas para criação e visualização de uma oferta e suas opções de compra</p>
+                        <div class="text-center">
+                            <a href="/admin/deals" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-5">
+                <div class="card">
+                    <img class="card-img-top my-3" src="/assets/images/client.svg" height="100">
+                    <div class="card-body pt-0 text-center">
+                        <h5 class="card-title">Cliente</h5>
+                        <p class="card-text">Contém as telas onde o usuário cliente da Peixe Urbano pode visualizar ofertas e comprar suas opções.</p>
+                        <div class="text-center">
+                            <a href="/client/deals" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:replace="fragments/footer :: jquery"></div>
+    <div th:replace="fragments/footer :: bootstrap"></div>
+</body>
+</html>

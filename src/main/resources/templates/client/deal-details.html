@@ -49,9 +49,7 @@
 
         <div class="row">
 
-
-            <div class="col-12 col-md-8">
-
+            <div class="col-12">
 
                 <div th:if="${deal.buyOptions.empty}" class="text-center">
                     <div class="alert alert-secondary text-center" role="alert">
@@ -67,10 +65,10 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <div th:each="option : ${deal.buyOptions}" class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
+                                <div class="w-50">
                                     <p class="mb-0"><strong th:text="${option.title}"></strong> <span th:if="${option.outOfStock}" class="badge badge-danger">Estoque Indisponível</span></p>
                                 </div>
-                                <div class="text-right d-flex align-items-center">
+                                <div class="w-50 d-flex align-items-center justify-content-end">
                                     <p class="mb-0">R$ <span th:text="${#numbers.formatDecimal(option.salePrice, 0, 'POINT', 2, 'COMMA')}"></span></p>
                                     <form method="post" th:action="@{/client/deals/{dealId}/buy-option/{optionId}(dealId=${deal.id},optionId=${option.id})}">
                                         <button th:attr="disabled=${option.outOfStock}? 'true' : 'false'" class="btn btn-primary text-uppercase ml-4">Compre</button>
