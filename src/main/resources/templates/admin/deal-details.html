@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <p class="card-text mb-1">
-                                <strong>Cupons</strong>: <span th:text="${option.quantityCupom}"></span>
+                                <strong>Cupons disponíveis</strong>: <span th:text="${option.quantityCupom}"></span>
                             </p>
                             <div class="text-right">
                                 <form method="post" th:action="@{/admin/deals/{dealId}/remove-buy-option/{optionId}(dealId=${deal.id},optionId=${option.id})}">
@@ -166,6 +166,8 @@
                             <select th:field="*{quantityCupom}" required class="form-control" id="option-cupons">
                                 <option value="100">100</option>
                                 <option value="20">20</option>
+                                <option value="10">10</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -176,6 +178,7 @@
                             <label for="option-start-date">Data de Saída</label>
                             <input type="date" th:field="*{endDate}" required class="form-control" id="option-start-date">
                         </div>
+                        <button id="hidden-submit-option-button" type="submit" class="invisible"></button>
                     </form>
 
                 </div>

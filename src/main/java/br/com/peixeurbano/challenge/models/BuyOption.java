@@ -20,7 +20,7 @@ public class BuyOption {
 
     private Double percentageDiscount;
 
-    private Long quantityCupom;
+    private long quantityCupom;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
@@ -72,11 +72,11 @@ public class BuyOption {
         this.percentageDiscount = percentageDiscount;
     }
 
-    public Long getQuantityCupom() {
+    public long getQuantityCupom() {
         return quantityCupom;
     }
 
-    public void setQuantityCupom(Long quantityCupom) {
+    public void setQuantityCupom(long quantityCupom) {
         this.quantityCupom = quantityCupom;
     }
 
@@ -109,7 +109,11 @@ public class BuyOption {
         return this.startDate.compareTo(today) * today.compareTo(this.endDate) > 0;
     }
 
-    public boolean isDisabled(){
-        return Long.compare(this.quantityCupom.longValue(), 0) == 0;
+    public boolean isOutOfStock(){
+        return Long.compare(this.quantityCupom, 0) == 0;
+    }
+
+    public void removeCupom(){
+        this.quantityCupom--;
     }
 }

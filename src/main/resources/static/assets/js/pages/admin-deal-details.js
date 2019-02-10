@@ -6,7 +6,7 @@ var AdminDealDetailsController = {
 	},
 
 	submitOptionForm: function () {
-		$('#option-form').submit();
+		$('#hidden-submit-option-button').click();
 	},
 
 	changeOptionPriceValue: function () {

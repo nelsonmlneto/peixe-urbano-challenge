@@ -75,7 +75,7 @@ public class AdminController {
     private Deal prepareDealForSaving(Deal deal){
         if (deal.getId() == null) {
             deal.setCreateDate(new Date());
-            deal.setTotalSold(new Long(0));
+            deal.setTotalSold(0);
             // TODO URL - Slug before saving
         }
 

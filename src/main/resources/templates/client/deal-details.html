@@ -17,6 +17,22 @@
                         </button>
                     </div>
                 </div>
+                <div th:if="${(param.buy != null) and (param.buy[0] == 'unavailableBuyOption')}">
+                    <div class="alert alert-danger alert-dismissible text-center mb-4" role="alert">
+                        Desculpe, opção de compra indisponível =(.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div th:if="${(param.buy != null) and (param.buy[0] == 'unavailableDeal')}">
+                    <div class="alert alert-danger alert-dismissible text-center mb-4" role="alert">
+                        Desculpe, oferta indisponível =(.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
                 <nav aria-label="breadcrumb mb-4">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">Cliente</li>
@@ -52,11 +68,13 @@
                         <ul class="list-group list-group-flush">
                             <div th:each="option : ${deal.buyOptions}" class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
-                                    <p class="mb-0"><strong th:text="${option.title}"></strong></p>
+                                    <p class="mb-0"><strong th:text="${option.title}"></strong> <span th:if="${option.outOfStock}" class="badge badge-danger">Estoque Indisponível</span></p>
                                 </div>
                                 <div class="text-right d-flex align-items-center">
                                     <p class="mb-0">R$ <span th:text="${#numbers.formatDecimal(option.salePrice, 0, 'POINT', 2, 'COMMA')}"></span></p>
-                                    <button class="btn btn-primary text-uppercase ml-4">Compre</button>
+                                    <form method="post" th:action="@{/client/deals/{dealId}/buy-option/{optionId}(dealId=${deal.id},optionId=${option.id})}">
+                                        <button th:attr="disabled=${option.outOfStock}? 'true' : 'false'" class="btn btn-primary text-uppercase ml-4">Compre</button>
+                                    </form>
                                 </div>
                             </div>
                         </ul>

@@ -30,7 +30,7 @@ public class Deal {
 
     private String url;
 
-    private Long totalSold;
+    private long totalSold;
 
     private Integer validDays;
 
@@ -92,11 +92,11 @@ public class Deal {
         this.url = url;
     }
 
-    public Long getTotalSold() {
+    public long getTotalSold() {
         return totalSold;
     }
 
-    public void setTotalSold(Long totalSold) {
+    public void setTotalSold(long totalSold) {
         this.totalSold = totalSold;
     }
 
@@ -141,5 +141,9 @@ public class Deal {
     public boolean isVisible() {
         Date today = new Date();
         return this.publishDate.compareTo(today) * today.compareTo(this.endDate) > 0;
+    }
+
+    public void addSale(){
+        this.totalSold++;
     }
 }

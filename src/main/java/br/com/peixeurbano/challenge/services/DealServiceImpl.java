@@ -1,5 +1,7 @@
 package br.com.peixeurbano.challenge.services;
 
+import br.com.peixeurbano.challenge.expection.UnavailableBuyOptionException;
+import br.com.peixeurbano.challenge.expection.UnavailableDealException;
 import br.com.peixeurbano.challenge.models.BuyOption;
 import br.com.peixeurbano.challenge.models.Deal;
 import br.com.peixeurbano.challenge.repositories.BuyOptionRepository;
@@ -70,14 +72,21 @@ public class DealServiceImpl implements DealService{
     }
 
     @Override
-    public void buyDeal(Integer dealId, Integer optionId) {
-        Deal deal = this.getDealById(dealId);
-        if (deal != null) {
-            for (BuyOption option : deal.getBuyOptions()){
-                if (option.getId().equals(optionId) && option.isVisible() && !option.isDisabled()){
-                    deal.getBuyOptions().remove(option);
-                }
+    public void buyDeal(Integer dealId, Integer optionId) throws UnavailableBuyOptionException, UnavailableDealException {
+        Deal deal = dealRepository.findById(dealId).orElse(null);
+        BuyOption option = buyOptionRepository.findById(optionId).orElse(null);
+
+        if (deal != null && deal.isVisible()) {
+            if (option != null && option.isVisible() && !option.isOutOfStock()) {
+                option.removeCupom();
+                deal.addSale();
+                dealRepository.save(deal);
+                buyOptionRepository.save(option);
+            }else{
+                throw new UnavailableBuyOptionException();
             }
+        } else {
+            throw new UnavailableDealException();
         }
     }
 

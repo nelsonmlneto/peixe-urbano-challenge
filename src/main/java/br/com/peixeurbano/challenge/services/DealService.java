@@ -1,5 +1,7 @@
 package br.com.peixeurbano.challenge.services;
 
+import br.com.peixeurbano.challenge.expection.UnavailableBuyOptionException;
+import br.com.peixeurbano.challenge.expection.UnavailableDealException;
 import br.com.peixeurbano.challenge.models.Deal;
 
 import java.util.List;
@@ -12,5 +14,5 @@ public interface DealService {
     Deal getVisibleDealById(Integer id);
     Deal saveDeal(Deal deal);
     void removeBuyOptionById(Integer id);
-    void buyDeal(Integer dealId, Integer optionId);
+    void buyDeal(Integer dealId, Integer optionId) throws UnavailableBuyOptionException, UnavailableDealException;
 }
