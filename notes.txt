@@ -69,14 +69,15 @@
       OK - Client - Detalhe
     OK - Delete User Entity
     OK - Customize Bootstrap CSS for Peixe Urbano
-    - Create Rules for Visualization
-    - Create "Buy Procuct"
-    - Deal - Create Unique Slug for URL
-    - Rename DB
-    - Criar Home
-    - Create Tests
+    OK - Create Rules for Visualization
+    OK - Create "Buy Procuct" and disabling option
+    - Create Home
     - Create README
+    - Rename DB
     - Creating Docker for running the project
+    
+    - Deal - Create Unique Slug for URL
+    - Create Tests
     - Study Deploy AWS with Spring Boot
 
 
