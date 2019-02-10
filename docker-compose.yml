@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  docker-mysql:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_example
+      - MYSQL_PASSWORD=root
+    ports:
+      - 6603:3306
+  peixe-urbano-challenge:
+    image: peixe-urbano-challenge
+    depends_on:
+      - docker-mysql
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=docker-mysql
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=db_example
+      - DATABASE_PORT=3306

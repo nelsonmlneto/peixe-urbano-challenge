@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-serving-web-content</artifactId>
+    <artifactId>peixe-urbano-challenge</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -56,12 +56,14 @@
         <java.version>1.8</java.version>
     </properties>
 
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>br.com.peixeurbano.challenge.Application</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
