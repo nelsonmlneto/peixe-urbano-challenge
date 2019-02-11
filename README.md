@@ -4,8 +4,13 @@ Desafio técnico para vaga de desenvolvedor Java na Peixe Urbano.
 
 Desenvolvido por Nelson Mariano Leite Neto
 
+## Requisitos não atendidos
 
-## Pré-requisitos
+* Gerar URL da oferta com slug baseado no nome do produto;
+* Testes Unitários e de Integração
+* Deploy da aplicação em ambiente AWS
+
+## Pré-requisitos para rodar o sistema
 
 Para compilar e executar o projeto é necessário
 ```
@@ -15,11 +20,14 @@ Para compilar e executar o projeto é necessário
 
 ## Compilar o Projeto com Maven
 
+Compilar o projeto com o maven.
+
+(O projeto possui alguns poucos testes unitários, porém o maven tenta subir a aplicação durante os testes e ocorre falha com o banco, por isso o -DskipTests=true)
 ```
-mvn package
+mvn package -DskipTests=true
 ```
 
-Este comando irá gerar:
+JAR será gerado em:
 
 ```
 /target/peixe-urbano-challenge-0.1.0.jar
@@ -58,12 +66,6 @@ Criei um arquivo docker-compose.yml para a mesma configuração acima, porém n�
 ```
 docker-compose up
 ```
-
-## Requisitos conhecidos que ficaram faltando
-
-* Gerar URL da oferta com slug baseado no nome do produto;
-* Testes Unitários e de Integração
-* Deploy da aplicação em ambiente AWS
 
 ## Anotações
 No arquivo notes.txt existem anotações que fui fazendo conforme o desenvolvimento.
