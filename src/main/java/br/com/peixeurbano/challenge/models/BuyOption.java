@@ -116,4 +116,9 @@ public class BuyOption {
     public void removeCupom(){
         this.quantityCupom--;
     }
+
+    public void calculateSaleOptionPrice(){
+        double salePrice = ((100.00 - this.getPercentageDiscount().doubleValue()) * this.getNormalPrice().doubleValue())/100.00;
+        this.salePrice = new Double(salePrice);
+    }
 }

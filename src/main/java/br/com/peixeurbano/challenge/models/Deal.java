@@ -3,6 +3,8 @@ package br.com.peixeurbano.challenge.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -145,5 +147,13 @@ public class Deal {
 
     public void addSale(){
         this.totalSold++;
+    }
+
+    public void calculateEndDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.publishDate);
+        c.add(Calendar.DATE, this.validDays.intValue());
+        this.endDate = c.getTime();
     }
 }

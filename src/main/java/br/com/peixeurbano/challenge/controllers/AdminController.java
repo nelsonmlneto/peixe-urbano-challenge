@@ -79,31 +79,13 @@ public class AdminController {
             // TODO URL - Slug before saving
         }
 
-        deal.setEndDate(this.calculateEndDate(deal.getPublishDate(), deal.getValidDays()));
-
+        deal.calculateEndDate();
         return deal;
     }
 
-    private Date calculateEndDate(Date date, Integer validDays){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        c.add(Calendar.DATE, validDays.intValue());
-        return c.getTime();
-    }
-
     private BuyOption prepareBuyOptionForSaving(BuyOption buyOption){
-        Double salePrice = this.calculateSaleOptionPrice(buyOption);
-        buyOption.setSalePrice(salePrice);
-
+        buyOption.calculateSaleOptionPrice();
         return buyOption;
-    }
-
-    private Double calculateSaleOptionPrice(BuyOption buyOption){
-
-        double salePrice = ((100.00 - buyOption.getPercentageDiscount().doubleValue()) * buyOption.getNormalPrice().doubleValue())/100.00;
-
-        return new Double(salePrice);
     }
 
 }
