@@ -53,7 +53,7 @@ localhost:8080
 
 ### Docker compose
 
-Criei um arquivo docker-compose.yml para a mesma configuração acima, porém não funcionou corretamente e não entendi o motivo. Parece-me algo no container mysql, o projeto spring não consegue se conectar.
+Criei um arquivo docker-compose.yml para a mesma configuração acima, porém não funcionou corretamente e não entendi o motivo. Parece-me algo no container mysql, o projeto spring não consegue se conectar com o banco.
 
 ```
 docker-compose up
