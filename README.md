@@ -1,4 +1,4 @@
-# Peixe Urbano Challenge
+# Desafio Peixe Urbano
 
 Desafio técnico para vaga de desenvolvedor Java na Peixe Urbano.
 

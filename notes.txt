@@ -70,12 +70,11 @@
     OK - Delete User Entity
     OK - Customize Bootstrap CSS for Peixe Urbano
     OK - Create Rules for Visualization
-    OK - Create "Buy Procuct" and disabling option
+    OK - Create "Buy Product" and disabling option
     OK - Create Home
     OK - Creating Docker for running the project
     OK - Rename DB
     OK - Create README and merge to master
-    - Comment Code
  	- Create Tests
     - Deal - Create Unique Slug for URL
     - Study Deploy AWS with Spring Boot
